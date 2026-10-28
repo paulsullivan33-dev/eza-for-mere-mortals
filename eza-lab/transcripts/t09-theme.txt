@@ -1,0 +1,15 @@
+$ cat theme-config/theme.yml
+filekinds:
+  directory:
+    foreground: "#ff00ff"
+    is_bold: true
+  symlink:
+    foreground: "#ffa500"
+
+$ eza --color=always -1 garden | sed "s/ESC/[ESC]/g" | grep -E "documents|link-to-notes"   # before
+[ESC][1;34mdocuments[ESC][0m
+[ESC][36mlink-to-notes[ESC][0m [ESC][1;90m->[ESC][0m notes.txt
+
+$ EZA_CONFIG_DIR=$PWD/theme-config eza --color=always -1 garden | sed "s/ESC/[ESC]/g" | grep -E "documents|link-to-notes"   # after
+[ESC][1;38;2;255;0;255mdocuments[ESC][0m
+[ESC][38;2;255;165;0mlink-to-notes[ESC][0m [ESC][1;90m->[ESC][0m notes.txt

@@ -1,0 +1,5 @@
+$ eza --version
+eza eza - A modern, maintained replacement for ls
+v0.23.5 [+git]
+https://github.com/eza-community/eza
+

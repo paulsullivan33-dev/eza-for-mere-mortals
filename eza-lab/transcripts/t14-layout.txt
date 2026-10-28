@@ -1,0 +1,24 @@
+$ eza --classify=always garden | grep -E "bin|run-backup|named-pipe|link-to-notes"
+bin/          clip.mp4    full-backup.tar  named-pipe|     page1.txt   photos/      readonly.txt
+broken-link@  documents/  link-to-notes@   notes-copy.txt  page2.txt   private.txt  run-backup.sh*
+
+$ eza --across garden
+bin              broken-link    budget.csv      clip.mp4    documents       empty-dir
+full-backup.tar  link-to-notes  link-to-photos  named-pipe  notes-copy.txt  notes.txt
+page1.txt        page2.txt      page10.txt      photos      private.txt     README.md
+readonly.txt     run-backup.sh
+
+$ eza --width=40 garden
+bin              notes-copy.txt
+broken-link      notes.txt
+budget.csv       page1.txt
+clip.mp4         page2.txt
+documents        page10.txt
+empty-dir        photos
+full-backup.tar  private.txt
+link-to-notes    README.md
+link-to-photos   readonly.txt
+named-pipe       run-backup.sh
+
+$ eza -ld garden     # the folder itself, not its contents
+drwxrwx--- - root 28 Oct 11:33 garden

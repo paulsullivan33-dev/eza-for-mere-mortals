@@ -1,0 +1,30 @@
+$ eza -la --header --group-directories-first garden
+Permissions Size User Date Modified Name
+drwxrwx---     - root 28 Oct 11:33  bin
+drwxrwx---     - root 28 Oct 11:33  documents
+drwxrwx---     - root 28 Oct 11:33  empty-dir
+lrwxrwxrwx     - root 28 Oct 11:33  link-to-photos -> photos
+drwxrwx---     - root 28 Oct 11:33  photos
+.rw-rw----@    7 root 28 Oct 11:33  .hidden
+lrwxrwxrwx     - root 28 Oct 11:33  broken-link -> no-such-file
+.rw-rw----@   38 root  5 Jan 09:00  budget.csv
+.rw-rw----@ 2.6M root 28 Oct 11:33  clip.mp4
+.rw-rw----  1.5G root 28 Oct 11:33  full-backup.tar
+lrwxrwxrwx     - root 28 Oct 11:33  link-to-notes -> notes.txt
+|rw-rw----     - root 28 Oct 11:33  named-pipe
+.rw-rw----@   29 root 20 Oct 12:00  notes-copy.txt
+.rw-rw----@   29 root 20 Oct 12:00  notes.txt
+.rw-rw----@    9 root 28 Oct 11:33  page1.txt
+.rw-rw----@    9 root 28 Oct 11:33  page2.txt
+.rw-rw----@    9 root 28 Oct 11:33  page10.txt
+.rw-------@   25 root 28 Oct 11:33  private.txt
+.rw-rw----@   14 root  1 Oct 17:45  README.md
+.r--r--r--@   23 root 28 Oct 11:33  readonly.txt
+.rwxr-xr-x@   26 root 28 Oct 11:33  run-backup.sh
+
+$ eza -laa garden | head -5    # a second --all adds . and ..
+drwxrwx---     - root 28 Oct 11:33 .
+drwxrwx---     - root 28 Oct 11:33 ..
+.rw-rw----@    7 root 28 Oct 11:33 .hidden
+drwxrwx---     - root 28 Oct 11:33 bin
+lrwxrwxrwx     - root 28 Oct 11:33 broken-link -> no-such-file

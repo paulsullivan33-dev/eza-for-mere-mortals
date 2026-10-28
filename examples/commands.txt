@@ -1,0 +1,94 @@
+eza — the distilled commands
+====================================================================
+Placeholders: <folder> is a folder of yours. The lab's practice
+folder is called "garden" and its git repository "repo"; both are
+built by eza-lab/make-fixtures.sh.
+
+FIRST CONTACT (chapters 3-4)
+--------------------------------------------------------------------
+  eza --version                    # look for the version + [+git]
+  eza                              # the grid: what is here?
+  eza <folder>                     # a folder other than this one
+  eza -1 <folder>                  # one name per line
+  eza -1 <folder> | grep page      # natural sort: 1, 2, 10
+
+THE LONG LISTING (chapter 5)
+--------------------------------------------------------------------
+  eza -l <folder>
+  eza -la --header --group-directories-first <folder>
+  eza -laa <folder>                # second --all adds . and ..
+  eza -lg <folder>                 # -g adds the group column
+  eza -l --no-user <folder>        # drop a column for a report
+
+SORTING AND FILTERING (chapter 6)
+--------------------------------------------------------------------
+  eza -l --sort=size --reverse <folder>     # biggest first
+  eza -l --sort=modified --reverse <folder> # newest first
+  eza -1 --sort=extension <folder>          # grouped by kind
+  eza --sort=Name <folder>                  # strict, capitals first
+  eza -D <folder>                           # only directories
+  eza -f <folder>                           # only files
+  eza -l -I '*.tmp|*.log' <folder>          # ignore patterns
+  eza -l --git-ignore .                     # the repo's own filter
+
+TREES (chapter 7)
+--------------------------------------------------------------------
+  eza --tree --level=2 <folder>
+  eza --tree <folder>/photos
+  eza --tree --level=2 -l <folder>          # facts inside the tree
+  eza --tree -I 'node_modules|target' <folder>
+  eza --tree --follow-symlinks <folder>     # deliberate: follows links
+
+GIT (chapter 8)
+--------------------------------------------------------------------
+  eza -l --git .                   # name the path: on eza 0.23.5,
+                                   # no path prints nothing at all
+  eza -l --git --git-ignore .
+  eza -l --git-repos <folder>      # branch + dirtiness per child repo
+  eza -l --git-repos-no-status <folder>   # branch only, much faster
+
+COLOURS, ICONS, THEMES (chapter 9)
+--------------------------------------------------------------------
+  eza --color=always -1 <folder> | sed 's/\x1b/[ESC]/g'
+                                   # make the colour codes visible
+  LS_COLORS="*.csv=35" eza <folder>       # ls's variable, honoured
+  EZA_COLORS="di=33" eza <folder>         # eza's own override
+  eza --icons=always --color=never -1 <folder>
+                                   # the icon characters, unpainted
+  EZA_CONFIG_DIR=<dir> eza <folder>       # theme.yml lives in <dir>
+  eza --color-scale=size -l <folder>      # shade by size, not kind
+  eza --hyperlink=always -1 <folder>      # clickable names (OSC 8)
+
+DATES AND SIZES (chapter 10)
+--------------------------------------------------------------------
+  eza -l --time-style=long-iso <folder>   # complete, sortable dates
+  eza -l --time-style=full-iso <folder>   # nanoseconds and timezone
+  eza -l --time-style=relative <folder>   # "4 minutes" — glances only
+  eza -l -u <folder>               # accessed instead of modified
+  eza -l --changed <folder>        # the clock touch cannot fake
+  eza -l --bytes <folder>          # exact sizes, no units
+  eza -l --binary <folder>         # Mi/Gi instead of M/G
+  eza -l --total-size <folder>     # folders weighed, at a walk's cost
+  eza -l -S <folder>               # allocated blocks beside lengths
+
+LINKS AND ATTRIBUTES (chapter 11)
+--------------------------------------------------------------------
+  eza -liH <folder>                # inodes + hard-link counts
+  eza -lX <link>                   # the target's facts, not the link's
+  eza -l --extended <file>         # read the extended attributes
+  eza --no-symlinks <folder>       # links hidden — know why you'd ask
+
+RECIPES (chapter 12)
+--------------------------------------------------------------------
+  eza -l --total-size --sort=size --reverse ~/Downloads
+  eza -l --sort=modified --reverse --time-style=long-iso .
+  eza -l --git-repos ~/src
+  eza --classify=always            # kind marks without colour
+  eza -1 --color=never --icons=never <folder>   # for a script's eyes
+
+WHEN IT MISBEHAVES (chapter 15)
+--------------------------------------------------------------------
+  eza -l <folder> </dev/null       # scripts: stdin held open on a
+                                   # pipe makes eza wait for its end
+  eza --version                    # no [+git]? chapter 8 is silent
+                                   # for a reason the version explains

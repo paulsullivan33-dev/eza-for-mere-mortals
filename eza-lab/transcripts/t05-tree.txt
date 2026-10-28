@@ -1,0 +1,48 @@
+$ eza --tree --level=2 garden
+garden
+├── bin
+├── broken-link -> no-such-file
+├── budget.csv
+├── clip.mp4
+├── documents
+│   ├── old-draft.txt
+│   └── report.md
+├── empty-dir
+├── full-backup.tar
+├── link-to-notes -> notes.txt
+├── link-to-photos -> photos
+├── named-pipe
+├── notes-copy.txt
+├── notes.txt
+├── page1.txt
+├── page2.txt
+├── page10.txt
+├── photos
+│   ├── 2023
+│   └── 2024
+├── private.txt
+├── README.md
+├── readonly.txt
+└── run-backup.sh
+
+$ eza --tree garden/photos
+garden/photos
+├── 2023
+│   └── barn.jpg
+└── 2024
+    ├── gate.jpg
+    └── river.png
+
+$ eza --tree --level=2 -l garden | head -12
+drwxrwx---     - root 28 Oct 11:33 garden
+drwxrwx---     - root 28 Oct 11:33 ├── bin
+lrwxrwxrwx     - root 28 Oct 11:33 ├── broken-link -> no-such-file
+.rw-rw----@   38 root  5 Jan 09:00 ├── budget.csv
+.rw-rw----@ 2.6M root 28 Oct 11:33 ├── clip.mp4
+drwxrwx---     - root 28 Oct 11:33 ├── documents
+.rw-rw----@   37 root 15 Jun  2019 │   ├── old-draft.txt
+.rw-rw----@   17 root 28 Oct 11:33 │   └── report.md
+drwxrwx---     - root 28 Oct 11:33 ├── empty-dir
+.rw-rw----  1.5G root 28 Oct 11:33 ├── full-backup.tar
+lrwxrwxrwx     - root 28 Oct 11:33 ├── link-to-notes -> notes.txt
+lrwxrwxrwx     - root 28 Oct 11:33 ├── link-to-photos -> photos

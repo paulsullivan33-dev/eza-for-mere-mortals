@@ -1,0 +1,29 @@
+site_name: Eza for Mere Mortals
+site_description: A modern replacement for ls. Listing files with colour, icons, git status and tree views, reading the long listing column by column, sorting and sizing honestly, and knowing where a prettier listing stops being the truth.
+site_url: https://paulsullivan33-dev.github.io/eza-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Eza Is: what-eza-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing Eza: installing-eza.md
+  - Your First Listing: your-first-listing.md
+  - The Long Listing: the-long-listing.md
+  - Sorting and Filtering: sorting-and-filtering.md
+  - Trees: trees.md
+  - Git Status in the Listing: git-status.md
+  - Colours, Icons and Themes: colours-icons-and-themes.md
+  - Dates and Sizes: dates-and-sizes.md
+  - Links and Attributes: links-and-attributes.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

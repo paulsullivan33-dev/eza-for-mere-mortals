@@ -1,0 +1,25 @@
+$ python3 -c "import os; print(os.listxattr(\"garden/budget.csv\"))"   # why the @?
+['user.hatch_tainted']
+
+$ python3 -c "...set user.lab_note on garden/notes.txt..."
+
+$ eza -l --extended garden/notes.txt garden/README.md
+.rw-rw----@ 29 root 20 Oct 12:00 garden/notes.txt
+                                 ├── user.hatch_tainted: "1"
+                                 └── user.lab_note: "checked by the lab"
+.rw-rw----@ 14 root  1 Oct 17:45 garden/README.md
+                                 └── user.hatch_tainted: "1"
+
+$ eza -liH garden | grep -E "notes"    # inode and hard-link counts
+1325587 lrwxrwxrwx  1    - root 28 Oct 11:33 link-to-notes -> notes.txt
+1325572 .rw-rw----@ 2   29 root 20 Oct 12:00 notes-copy.txt
+1325572 .rw-rw----@ 2   29 root 20 Oct 12:00 notes.txt
+
+$ eza -lX garden/link-to-notes    # -X shows the target's facts, not the link's
+lrw-rw----@ 29 root 20 Oct 12:00 garden/link-to-notes
+
+$ eza --tree --follow-symlinks --level=3 garden | grep -A3 link-to-photos
+├── link-to-photos -> photos
+│   ├── 2023
+│   │   └── barn.jpg
+│   └── 2024

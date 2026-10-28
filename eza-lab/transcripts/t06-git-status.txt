@@ -1,0 +1,27 @@
+$ git status --short     # the ground truth, from git itself
+ M app.py
+M  data.csv
+A  feature.py
+?? scratch.log
+
+$ eza -l --git .         # name the folder: with no path argument, eza 0.23.5 prints nothing here
+.rw-rw----@ 62 root 28 Oct 11:33 -M app.py
+.rw-rw----@  8 root 28 Oct 11:33 -I cache.tmp
+.rw-rw----@ 12 root 28 Oct 11:33 M- data.csv
+.rw-rw----@ 17 root 28 Oct 11:33 N- feature.py
+.rw-rw----@ 15 root 28 Oct 11:33 -- README.md
+.rw-rw----@ 14 root 28 Oct 11:33 -N scratch.log
+
+$ eza -l --git --git-ignore .   # --git-ignore hides the ignored cache.tmp entirely
+.rw-rw----@ 62 root 28 Oct 11:33 -M app.py
+.rw-rw----@ 12 root 28 Oct 11:33 M- data.csv
+.rw-rw----@ 17 root 28 Oct 11:33 N- feature.py
+.rw-rw----@ 15 root 28 Oct 11:33 -- README.md
+.rw-rw----@ 14 root 28 Oct 11:33 -N scratch.log
+
+$ cd ..   # one level up, where repo/ sits beside garden/
+$ eza -l --git-repos .
+drwxrwx---     - root 28 Oct 11:33 - -      garden
+.rwxrwx---@ 2.2k root 28 Oct 11:33 - -      make-fixtures.sh
+drwxrwx---     - root 28 Oct 11:33 + master repo
+drwxrwx---     - root 28 Oct 11:37 - -      theme-config

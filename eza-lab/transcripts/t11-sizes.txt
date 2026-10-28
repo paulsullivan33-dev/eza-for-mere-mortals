@@ -1,0 +1,23 @@
+$ eza -l --bytes garden | head -6
+drwxrwx---           - root 28 Oct 11:33 bin
+lrwxrwxrwx           - root 28 Oct 11:33 broken-link -> no-such-file
+.rw-rw----@         38 root  5 Jan 09:00 budget.csv
+.rw-rw----@    2600000 root 28 Oct 11:33 clip.mp4
+drwxrwx---           - root 28 Oct 11:33 documents
+drwxrwx---           - root 28 Oct 11:33 empty-dir
+
+$ eza -l --binary garden | grep -E "clip|full-backup"
+.rw-rw----@ 2.5Mi root 28 Oct 11:33 clip.mp4
+.rw-rw----  1.4Gi root 28 Oct 11:33 full-backup.tar
+
+$ eza -l --total-size garden | grep -E "photos|documents|empty"
+drwxrwx---    54 root 28 Oct 11:33 documents
+drwxrwx---     0 root 28 Oct 11:33 empty-dir
+lrwxrwxrwx     - root 28 Oct 11:33 link-to-photos -> photos
+drwxrwx---  3.2k root 28 Oct 11:33 photos
+
+$ eza -l -S garden | grep -E "clip|full-backup|notes.txt"
+.rw-rw----@ 2.6M 2.6M root 28 Oct 11:33 clip.mp4
+.rw-rw----  1.5G    0 root 28 Oct 11:33 full-backup.tar
+lrwxrwxrwx     -    - root 28 Oct 11:33 link-to-notes -> notes.txt
+.rw-rw----@   29 4.1k root 20 Oct 12:00 notes.txt

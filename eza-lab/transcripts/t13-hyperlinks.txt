@@ -1,0 +1,5 @@
+$ eza --hyperlink=always --color=never -1 garden | cat -v | head -4
+^[]8;;file:///home/hatch/workspace/build-check/eza-scratch/lab/garden/bin^[\bin^[]8;;^[\
+^[]8;;file:///home/hatch/workspace/build-check/eza-scratch/lab/garden/broken-link^[\broken-link^[]8;;^[\ -> no-such-file
+^[]8;;file:///home/hatch/workspace/build-check/eza-scratch/lab/garden/budget.csv^[\budget.csv^[]8;;^[\
+^[]8;;file:///home/hatch/workspace/build-check/eza-scratch/lab/garden/clip.mp4^[\clip.mp4^[]8;;^[\

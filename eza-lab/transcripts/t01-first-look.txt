@@ -1,0 +1,36 @@
+$ ls garden            # plain GNU ls, for contrast
+README.md
+bin
+broken-link
+budget.csv
+clip.mp4
+documents
+empty-dir
+full-backup.tar
+link-to-notes
+link-to-photos
+named-pipe
+notes-copy.txt
+notes.txt
+page1.txt
+page10.txt
+page2.txt
+photos
+private.txt
+readonly.txt
+run-backup.sh
+
+$ eza garden           # the same folder with eza, no options
+bin          clip.mp4   full-backup.tar  named-pipe      page1.txt   photos       readonly.txt
+broken-link  documents  link-to-notes    notes-copy.txt  page2.txt   private.txt  run-backup.sh
+budget.csv   empty-dir  link-to-photos   notes.txt       page10.txt  README.md
+
+$ ls -1 garden | grep page    # how ls orders the page files
+page1.txt
+page10.txt
+page2.txt
+
+$ eza -1 garden | grep page   # eza reads the numbers in names
+page1.txt
+page2.txt
+page10.txt

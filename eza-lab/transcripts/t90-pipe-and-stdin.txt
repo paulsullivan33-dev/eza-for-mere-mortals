@@ -1,0 +1,48 @@
+$ env -u COLUMNS eza garden | cat   # piped, with no width to work to: one per line, no colour
+bin
+broken-link -> no-such-file
+budget.csv
+clip.mp4
+documents
+empty-dir
+full-backup.tar
+link-to-notes -> notes.txt
+link-to-photos -> photos
+named-pipe
+notes-copy.txt
+notes.txt
+page1.txt
+page2.txt
+page10.txt
+photos
+private.txt
+README.md
+readonly.txt
+run-backup.sh
+
+$ eza --color=always garden | cat -v | head -3    # colour can be forced back on
+^[[1;34mbin^[[0m          ^[[1;35mclip.mp4^[[0m   ^[[31mfull-backup.tar^[[0m  ^[[33mnamed-pipe^[[0m      page1.txt   ^[[1;34mphotos^[[0m       readonly.txt
+^[[31mbroken-link^[[0m  ^[[1;34mdocuments^[[0m  ^[[36mlink-to-notes^[[0m    notes-copy.txt  page2.txt   private.txt  ^[[1;32mrun-backup.sh^[[0m
+budget.csv   ^[[1;34mempty-dir^[[0m  ^[[36mlink-to-photos^[[0m   notes.txt       page10.txt  ^[[1;4;33mREADME.md^[[0m
+
+$ eza -F garden      # an ls habit that breaks: -F takes an optional value and swallows the path
+error: invalid value 'garden' for '--classify [<WHEN>]'
+  [possible values: always, auto, never]
+
+For more information, try '--help'.
+(exit 2)
+
+$ cd repo; eza -l --git      # inside a repo, but no path named: silence
+(exit 0 — no output at all; naming the path, eza -l --git . , lists normally: see t06)
+
+$ time (sleep 3 | eza -1 garden >/dev/null)    # eza reads stdin when it is a pipe, and waits for the end of it
+
+real	0m3.002s
+user	0m0.002s
+sys	0m0.002s
+
+$ time (eza -1 garden </dev/null >/dev/null)   # with stdin closed off, the same listing is instant
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.003s

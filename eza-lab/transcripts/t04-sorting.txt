@@ -1,0 +1,71 @@
+$ eza -l --sort=size garden
+drwxrwx---     - root 28 Oct 11:33 bin
+drwxrwx---     - root 28 Oct 11:33 empty-dir
+|rw-rw----     - root 28 Oct 11:33 named-pipe
+lrwxrwxrwx     - root 28 Oct 11:33 link-to-photos -> photos
+.rw-rw----@    9 root 28 Oct 11:33 page1.txt
+.rw-rw----@    9 root 28 Oct 11:33 page2.txt
+.rw-rw----@    9 root 28 Oct 11:33 page10.txt
+lrwxrwxrwx     - root 28 Oct 11:33 link-to-notes -> notes.txt
+lrwxrwxrwx     - root 28 Oct 11:33 broken-link -> no-such-file
+.rw-rw----@   14 root  1 Oct 17:45 README.md
+drwxrwx---     - root 28 Oct 11:33 photos
+.r--r--r--@   23 root 28 Oct 11:33 readonly.txt
+.rw-------@   25 root 28 Oct 11:33 private.txt
+.rwxr-xr-x@   26 root 28 Oct 11:33 run-backup.sh
+.rw-rw----@   29 root 20 Oct 12:00 notes.txt
+.rw-rw----@   29 root 20 Oct 12:00 notes-copy.txt
+.rw-rw----@   38 root  5 Jan 09:00 budget.csv
+drwxrwx---     - root 28 Oct 11:33 documents
+.rw-rw----@ 2.6M root 28 Oct 11:33 clip.mp4
+.rw-rw----  1.5G root 28 Oct 11:33 full-backup.tar
+
+$ eza -1 --sort=extension garden
+bin
+broken-link -> no-such-file
+documents
+empty-dir
+link-to-notes -> notes.txt
+link-to-photos -> photos
+named-pipe
+photos
+budget.csv
+README.md
+clip.mp4
+run-backup.sh
+full-backup.tar
+notes-copy.txt
+notes.txt
+page1.txt
+page2.txt
+page10.txt
+private.txt
+readonly.txt
+
+$ eza -l --sort=modified garden
+.rw-rw----@   38 root  5 Jan 09:00 budget.csv
+.rw-rw----@   14 root  1 Oct 17:45 README.md
+.rw-rw----@   29 root 20 Oct 12:00 notes.txt
+.rw-rw----@   29 root 20 Oct 12:00 notes-copy.txt
+drwxrwx---     - root 28 Oct 11:33 photos
+drwxrwx---     - root 28 Oct 11:33 bin
+drwxrwx---     - root 28 Oct 11:33 empty-dir
+.rw-------@   25 root 28 Oct 11:33 private.txt
+.r--r--r--@   23 root 28 Oct 11:33 readonly.txt
+.rwxr-xr-x@   26 root 28 Oct 11:33 run-backup.sh
+drwxrwx---     - root 28 Oct 11:33 documents
+.rw-rw----@ 2.6M root 28 Oct 11:33 clip.mp4
+.rw-rw----  1.5G root 28 Oct 11:33 full-backup.tar
+.rw-rw----@    9 root 28 Oct 11:33 page1.txt
+.rw-rw----@    9 root 28 Oct 11:33 page2.txt
+.rw-rw----@    9 root 28 Oct 11:33 page10.txt
+lrwxrwxrwx     - root 28 Oct 11:33 link-to-notes -> notes.txt
+lrwxrwxrwx     - root 28 Oct 11:33 link-to-photos -> photos
+lrwxrwxrwx     - root 28 Oct 11:33 broken-link -> no-such-file
+|rw-rw----     - root 28 Oct 11:33 named-pipe
+
+$ eza -l --sort=size --reverse garden | head -4
+.rw-rw----  1.5G root 28 Oct 11:33 full-backup.tar
+.rw-rw----@ 2.6M root 28 Oct 11:33 clip.mp4
+drwxrwx---     - root 28 Oct 11:33 documents
+.rw-rw----@   38 root  5 Jan 09:00 budget.csv

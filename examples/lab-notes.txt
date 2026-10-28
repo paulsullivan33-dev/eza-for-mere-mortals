@@ -1,0 +1,74 @@
+The lab — one real binary, two fixtures, nobody else's files
+====================================================================
+
+The lab is eza as the project ships it, run on the build machine
+(an Ubuntu sandbox, 2 CPUs, 7.7 GB RAM):
+
+  * eza 0.23.5, the official release binary
+    (eza_x86_64-unknown-linux-gnu.tar.gz from the project's
+    GitHub releases). Its SHA-256 matched the digest published
+    on the release's own asset list:
+    35c70c5c43c29108075e58b893234c67ef585f0b53a7eaf8e9e7d4eec9f339b4.
+    Version line reports [+git]: the git reader is compiled in.
+  * Two fixtures, built by eza-lab/make-fixtures.sh and shipped
+    with the guide so any reader can rebuild them:
+      - "garden": 21 entries with controlled kinds, ages
+        (2019-2026 via touch -d), sizes (9 bytes to a 1.5G
+        sparse file), permissions (600/444/755), two hard
+        links to one body, three symlinks (one broken) and a
+        named pipe.
+      - "repo": a git repository put into known states —
+        unstaged modification, staged modification, staged
+        new file, untracked file, .gitignore-d file — so eza's
+        git column could be checked against git status itself.
+  * The terminal used for verification has no Nerd Font. Icons
+    were verified as bytes (codepoints), never as pictures.
+  * The build machine stamps every file it writes with an
+    extended attribute of its own (user.hatch_tainted). That is
+    why most files in the transcripts wear the @ mark; the
+    attribute the lab set itself, for chapter 11, is
+    user.lab_note.
+
+What the lab ran, in eza-lab/transcripts/:
+
+  t00-version.txt          version line and build flags
+  t01-first-look.txt       plain eza vs plain ls; natural sort
+  t02-long-listing.txt     eza -l vs ls -l, same folder
+  t03-hidden-and-header.txt  -a, -aa, --header, dirs first
+  t04-sorting.txt          size, extension, modified, reverse
+  t05-tree.txt             --tree at levels, tree with -l
+  t06-git-status.txt       the git column vs git status --short;
+                           --git-ignore; --git-repos one level up
+  t07-colours.txt          escape codes made visible; LS_COLORS
+                           and EZA_COLORS each changing one thing
+  t08-icons.txt            the icons listed; then every icon
+                           identified by Unicode codepoint
+  t09-theme.txt            a two-rule theme.yml, before and
+                           after, proven by the changed codes
+  t10-times.txt            five --time-style values on the same
+                           two files; accessed/changed columns
+  t11-sizes.txt            --bytes, --binary, --total-size, -S
+                           (a 1.5G sparse file using 0 blocks)
+  t12-links-and-extended.txt  inodes and link counts; -X;
+                           --follow-symlinks; an xattr set by
+                           the lab and read back with --extended
+  t13-hyperlinks.txt       OSC 8 sequences, made visible
+  t14-layout.txt           --classify=always, --across, --width,
+                           -d
+  t90-pipe-and-stdin.txt   piped output; forced colour; the -F
+                           error; --git with no path (silence);
+                           eza waiting 3.002s for a held-open
+                           stdin pipe vs 0.003s with </dev/null
+
+Three findings cost the lab real time and are written into the
+chapters as first-class behaviour, not footnotes:
+
+  1. eza 0.23.5 with --git and no path argument prints nothing
+     (exit 0). Name the path and it works. (t06, t90)
+  2. eza reads stdin whenever stdin is a pipe and waits for its
+     end before printing; the lab's first git capture "hung"
+     for exactly this reason. Scripts should use </dev/null.
+     (t90)
+  3. -F takes an optional value in this version and swallows
+     the next word as that value: "eza -F garden" is an error,
+     not a listing. Use --classify=always. (t90)

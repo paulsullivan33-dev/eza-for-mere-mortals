@@ -1,0 +1,27 @@
+$ eza -l --time-style=default garden/documents
+.rw-rw----@ 37 root 15 Jun  2019 old-draft.txt
+.rw-rw----@ 17 root 28 Oct 11:33 report.md
+
+$ eza -l --time-style=iso garden/documents
+.rw-rw----@ 37 root 2019-06-15  old-draft.txt
+.rw-rw----@ 17 root 10-28 11:33 report.md
+
+$ eza -l --time-style=long-iso garden/documents
+.rw-rw----@ 37 root 2019-06-15 10:30 old-draft.txt
+.rw-rw----@ 17 root 2026-10-28 11:33 report.md
+
+$ eza -l --time-style=full-iso garden/documents
+.rw-rw----@ 37 root 2019-06-15 10:30:00.000000000 +0000 old-draft.txt
+.rw-rw----@ 17 root 2026-10-28 11:33:30.146058484 +0000 report.md
+
+$ eza -l --time-style=relative garden/documents
+.rw-rw----@ 37 root 7 years   old-draft.txt
+.rw-rw----@ 17 root 4 minutes report.md
+
+$ eza -l --time=accessed garden/documents     # the other timestamps are columns too
+.rw-rw----@ 37 root 15 Jun  2019 old-draft.txt
+.rw-rw----@ 17 root 28 Oct 11:33 report.md
+
+$ eza -l -m -u --changed garden/documents | head -3   # several time columns at once
+.rw-rw----@ 37 root 15 Jun  2019 28 Oct 11:33 15 Jun  2019 old-draft.txt
+.rw-rw----@ 17 root 28 Oct 11:33 28 Oct 11:33 28 Oct 11:33 report.md

@@ -1,0 +1,9 @@
+$ eza --color=always -1 garden | sed "s/ESC/[ESC]/g" | grep -E "documents|budget"
+budget.csv
+[ESC][1;34mdocuments[ESC][0m
+
+$ LS_COLORS="*.csv=35" eza --color=always -1 garden | sed "s/ESC/[ESC]/g" | grep budget
+[ESC][35mbudget.csv[ESC][0m
+
+$ EZA_COLORS="di=33" eza --color=always -1 garden | sed "s/ESC/[ESC]/g" | grep documents
+[ESC][33mdocuments[ESC][0m

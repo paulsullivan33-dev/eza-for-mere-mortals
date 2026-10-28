@@ -1,0 +1,43 @@
+$ eza --icons=always --color=never -1 garden
+ bin
+󰡯 broken-link -> no-such-file
+ budget.csv
+ clip.mp4
+ documents
+ empty-dir
+ full-backup.tar
+󰡯 link-to-notes -> notes.txt
+ link-to-photos -> photos
+󰡯 named-pipe
+ notes-copy.txt
+ notes.txt
+ page1.txt
+ page2.txt
+ page10.txt
+ photos
+ private.txt
+󰂺 README.md
+ readonly.txt
+ run-backup.sh
+
+$ eza --icons=always --color=never -1 garden | python3 -c "...print each icon with its codepoint..."
+  U+F115  (no Unicode name: private use area)  -> bin
+󰡯  U+F086F  (no Unicode name: private use area)  -> broken-link -> no-such-file
+  U+EEFC  (no Unicode name: private use area)  -> budget.csv
+  U+F03D  (no Unicode name: private use area)  -> clip.mp4
+  U+E5FF  (no Unicode name: private use area)  -> documents
+  U+F115  (no Unicode name: private use area)  -> empty-dir
+  U+F410  (no Unicode name: private use area)  -> full-backup.tar
+󰡯  U+F086F  (no Unicode name: private use area)  -> link-to-notes -> notes.txt
+  U+E5FF  (no Unicode name: private use area)  -> link-to-photos -> photos
+󰡯  U+F086F  (no Unicode name: private use area)  -> named-pipe
+  U+F15C  (no Unicode name: private use area)  -> notes-copy.txt
+  U+F15C  (no Unicode name: private use area)  -> notes.txt
+  U+F15C  (no Unicode name: private use area)  -> page1.txt
+  U+F15C  (no Unicode name: private use area)  -> page2.txt
+  U+F15C  (no Unicode name: private use area)  -> page10.txt
+  U+E5FF  (no Unicode name: private use area)  -> photos
+  U+F15C  (no Unicode name: private use area)  -> private.txt
+󰂺  U+F00BA  (no Unicode name: private use area)  -> README.md
+  U+F15C  (no Unicode name: private use area)  -> readonly.txt
+  U+F489  (no Unicode name: private use area)  -> run-backup.sh
